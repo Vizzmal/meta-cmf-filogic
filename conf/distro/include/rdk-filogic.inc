@@ -1,6 +1,6 @@
 
 DISTRO_FEATURES:append = " rdk-oss-ssa"
-DISTRO_FEATURES:remove_dunfell = "telemetry2_0"
+DISTRO_FEATURES:remove:dunfell = "telemetry2_0"
 
 # RDKBDEV-73 : Dynamic DNS : Standardization based on broadband-forum.
 DISTRO_FEATURES:append = " ddns_broadband"
@@ -20,13 +20,13 @@ DISTRO_FEATURES:append = " webconfig_bin"
 DISTRO_FEATURES:append = " core-net-lib"
 
 # RDKB-48800: Install DHCP Manager service file
-DISTRO_FEATURES:append_broadband = " dhcp_manager"
+DISTRO_FEATURES:append:broadband = " dhcp_manager"
 
 # Fix MeshAgent build errors
-DISTRO_FEATURES:append_broadband = " WanFailOverSupportEnable"
+DISTRO_FEATURES:append:broadband = " WanFailOverSupportEnable"
 
-DISTRO_FEATURES:append_kirkstone = " kirkstone"
-DISTRO_FEATURES_NATIVE:append_kirkstone = " kirkstone"
+DISTRO_FEATURES:append:kirkstone = " kirkstone"
+DISTRO_FEATURES_NATIVE:append:kirkstone = " kirkstone"
 
 DISTRO_FEATURES:append = " meshwifi"
 DISTRO_FEATURES:append = " ipv6"
@@ -37,8 +37,11 @@ DISTRO_FEATURES:append = " filogic"
 #DISTRO_FEATURES:append = " samba"
 DISTRO_FEATURES:append = " three_gmac"
 HOSTTOOLS += " python"
-DISTRO_FEATURES_append = " rdkb_configurable_wan_interface"
+DISTRO_FEATURES:append = " rdkb_configurable_wan_interface"
 #Disable rdm-agent for reference platform
-DISTRO_FEATURES_append = " RDM"
-DISTRO_FEATURES_append = " rrd"
+DISTRO_FEATURES:append = " RDM"
+DISTRO_FEATURES:append = " rrd"
 
+# This is the current supported exception variable form. Wrynose policy still
+# requires validation against the authoritative RDK manifest before acceptance.
+require conf/distro/include/whitelist_kirkstone.inc
